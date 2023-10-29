@@ -24,6 +24,11 @@
   color: white;
 }
 
+.Add-Button{
+  text-align: right;
+  margin-right: 16%;
+
+}
 .App-link {
   color: #61dafb;
 }

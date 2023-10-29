@@ -9,13 +9,15 @@ function EmployeePage() {
   //variables
   const [showAddModal, setShowAddModal] = useState(false);
   // load employee data
-  
-  
+
+
   return (
     <div >
-      <EmployeeModal mShow={showAddModal} setShow={setShowAddModal}/>
+      <EmployeeModal mShow={showAddModal} setShow={setShowAddModal} />
       <EmployeeList />
-      <AddEmployeeButton setShowAddModal={setShowAddModal}/>
+      <div className="Add-Button">
+        <AddEmployeeButton  setShowAddModal={setShowAddModal} />
+      </div>
     </div>
   );
 }
