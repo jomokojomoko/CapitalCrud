@@ -9,6 +9,9 @@ module.exports = app => {
     // create a new employee
     router.post("/",employee.create);
 
-    //Initialize router and route
+     // delete a Employee with id header
+     router.delete("/:id", employee.delete);
+
+    // initialize router and route
     app.use('/api/employees', router);
 };

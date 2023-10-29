@@ -7,7 +7,7 @@ exports.getAll = (req, res) => {
         if (err)
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving tutorials."
+                    err.message || "Some error occurred while retrieving employees."
             });
         else res.send(data);
     });
@@ -34,8 +34,25 @@ exports.create = (req, res) => {
         if (err)
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Tutorial."
+                    err.message || "Some error occurred while creating the employees."
             });
         else res.send(data);
+    });
+};
+
+// delete a employee with the specified id in the request
+exports.delete = (req, res) => {
+    Tutorial.remove(req.params.id, (err, data) => {
+        if (err) {
+            if (err.kind === "not_found") {
+                res.status(404).send({
+                    message: `Not found employee with id ${req.params.id}.`
+                });
+            } else {
+                res.status(500).send({
+                    message: "Could not delete employee with id " + req.params.id
+                });
+            }
+        } else res.send({ message: `Employee was deleted successfully!` });
     });
 };
