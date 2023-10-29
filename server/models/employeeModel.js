@@ -2,8 +2,8 @@ const sql = require("./index.js");
 
 // constructor
 const Employee = function (employee) {
-    this.firstName = employee.firstName;
-    this.lastName = employee.lastName;
+    this.first_name = employee.first_name;
+    this.last_name = employee.last_name;
     this.salary = employee.salary;
 };
 
@@ -18,9 +18,23 @@ Employee.getAll = result => {
             return;
         }
 
-        console.log("Employees: ", res);
+        console.log("employees: ", res);
         result(null, res);
     });
 };
+
+// create a employee from information in newEmployee
+Employee.create = (newEmployee, result) => {
+    sql.query("INSERT INTO employees SET ?", newEmployee, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+  
+      console.log("created employees: ", { id: res.insertId, ...newEmployee });
+      result(null, { id: res.insertId, ...newEmployee });
+    });
+  }
 
 module.exports = Employee;

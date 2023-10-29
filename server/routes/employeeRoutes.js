@@ -6,5 +6,9 @@ module.exports = app => {
     // retrieve all employees
     router.get("/", employee.getAll);
 
+    // create a new employee
+    router.post("/",employee.create);
+
+    //Initialize router and route
     app.use('/api/employees', router);
 };
