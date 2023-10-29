@@ -7,6 +7,11 @@ class EmployeeService{
      getAll() {
         return  http.get("/employees");
       }
+
+      // create a new employee
+      createEmployee(employeeData){
+        return http.post("employees",employeeData);
+      }
 }
 
 export default new EmployeeService();
