@@ -1,12 +1,19 @@
-//import statements
+// import statements
 import { Button } from "react-bootstrap";
 import EmployeeService from "../../services/employeeService";
+// css import
+import "./button.css"
 
-function DeleteEmployeeButton({setShowAddModal}){
+function DeleteEmployeeButton({dId}){
     
-    function addEmployee() {
-       
-            setShowAddModal(true);
+    function deleteEmployee() {
+        EmployeeService.deleteEmployee(dId)
+        .then(response => {
+          console.log(response.data)
+        }).catch(e => {
+          console.log(e);
+        });
+  
     }
 
     return(
@@ -14,4 +21,4 @@ function DeleteEmployeeButton({setShowAddModal}){
     );
 }
 
-export default Delete;
+export default DeleteEmployeeButton;

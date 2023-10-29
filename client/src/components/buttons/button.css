@@ -1,4 +1,7 @@
 .Delete-Button {
     border: none;
     background: none;
+    color:red;
+    font-weight: 700;
 }
+

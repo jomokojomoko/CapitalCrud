@@ -2,8 +2,6 @@
 import EmployeeService from '../../services/employeeService';
 import { useState, useEffect } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container'
 import EmployeeRow from '../table/employeeRow';
 
@@ -19,13 +17,8 @@ function EmployeeList() {
                 console.log(response.data);
 
                 setListItems(response.data.map((employee) =>
-
                     <ListGroup.Item id={employee.id}>
-                        <Row>
-                            <EmployeeRow employeeData={employee.id} />
-
-                            <Col>{employee["first_name"]}</Col><Col>{employee["last_name"]}</Col><Col>{employee["salary"]}</Col>
-                        </Row>
+                        <EmployeeRow employeeData={employee} />
                     </ListGroup.Item>
                 ));
             })

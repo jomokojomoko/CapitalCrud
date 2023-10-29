@@ -42,7 +42,7 @@ exports.create = (req, res) => {
 
 // delete a employee with the specified id in the request
 exports.delete = (req, res) => {
-    Tutorial.remove(req.params.id, (err, data) => {
+    Employee.remove(req.params.id, (err, data) => {
         if (err) {
             if (err.kind === "not_found") {
                 res.status(404).send({

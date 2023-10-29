@@ -10,7 +10,11 @@ class EmployeeService{
 
       // create a new employee
       createEmployee(employeeData){
-        return http.post("employees",employeeData);
+        return http.post("/employees",employeeData);
+      }
+
+      deleteEmployee(id){
+        return http.delete("/employees/"+id);
       }
 }
 
