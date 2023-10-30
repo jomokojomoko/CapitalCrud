@@ -60,7 +60,7 @@ function UpdateModal({ mShow, setShow, setRefresh, uId}) {
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>First Name</Form.Label>
+                        <Form.Label>Last Name</Form.Label>
                         <Form.Control
                             placeholder="Enter the last name"
                             autoFocus

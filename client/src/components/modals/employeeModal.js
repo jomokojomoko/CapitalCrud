@@ -3,6 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import EmployeeService from '../../services/employeeService';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
+import { CreateEmployee } from '../../data/employeeData';
 function EmployeeModal({ mShow, setShow, setRefresh }) {
     //set variables
     const [firstName, setFirstName] = useState("");
@@ -22,13 +23,7 @@ function EmployeeModal({ mShow, setShow, setRefresh }) {
             last_name: lastName
         };
 
-        EmployeeService.createEmployee(data)
-            .then(response => {
-                console.log(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        CreateEmployee(setRefresh,data);
         
         setRefresh(true);
         setShow(false);
@@ -67,7 +62,7 @@ function EmployeeModal({ mShow, setShow, setRefresh }) {
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>First Name</Form.Label>
+                        <Form.Label>Last Name</Form.Label>
                         <Form.Control
                             placeholder="Enter the last name"
                             autoFocus
