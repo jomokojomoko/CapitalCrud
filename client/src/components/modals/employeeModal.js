@@ -1,17 +1,15 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import EmployeeService from '../../services/employeeService';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
-import { CreateEmployee } from '../../data/employeeData';
-function EmployeeModal({ mShow, setShow, setRefresh }) {
+function EmployeeModal({ setModalInfo, modalInfo, updateList}) {
     //set variables
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [salary, setSalary] = useState("");
 
     function handleClose() {
-        setShow(false);
+        setModalInfo([false,""]);
     };
 
     function handleSubmit(event) {
@@ -23,10 +21,9 @@ function EmployeeModal({ mShow, setShow, setRefresh }) {
             last_name: lastName
         };
 
-        CreateEmployee(setRefresh,data);
-        
-        setRefresh(true);
-        setShow(false);
+        updateList(data);
+
+        setModalInfo([false,""]);
         setFirstName("");
         setLastName("");
         setSalary("");
@@ -45,9 +42,9 @@ function EmployeeModal({ mShow, setShow, setRefresh }) {
     }
 
     return (
-        <Modal show={mShow} onHide={handleClose}>
+        <Modal show={modalInfo[0]} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>Add an employee</Modal.Title>
+                <Modal.Title>{modalInfo[1]} an employee</Modal.Title>
             </Modal.Header>
             <Form onSubmit={handleSubmit}>
                 <Modal.Body>
@@ -87,7 +84,7 @@ function EmployeeModal({ mShow, setShow, setRefresh }) {
                         Close
                     </Button>
                     <Button variant="primary" type="submit">
-                        Add Employee
+                        {modalInfo[1]} Employee
                     </Button>
                 </Modal.Footer>
             </Form>

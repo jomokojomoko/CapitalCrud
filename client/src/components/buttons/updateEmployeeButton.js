@@ -4,9 +4,9 @@ import { Button } from "react-bootstrap";
 // css import
 import "./button.css"
 
-function UpdateEmployeeButton({ setShowUpdateModal, uId, setUId}) {
+function UpdateEmployeeButton({ setModalInfo, uId, setUId}) {
     function showUpdateModal(){
-        setShowUpdateModal(true);
+        setModalInfo([true,"Update"]);
         setUId(uId);
     }
     return (

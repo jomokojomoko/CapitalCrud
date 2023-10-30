@@ -18,8 +18,8 @@ export function GetAllData(setData) {
 }
 
 // update an employee by id
-export function UpdateEmployee(setRefresh, id, employeeData) {
-    setRefresh(false);
+export function UpdateEmployee( id, employeeData) {
+    
     EmployeeService.updateEmployee(id, employeeData)
         .then((response) => {
             console.log(response.data);
@@ -30,9 +30,7 @@ export function UpdateEmployee(setRefresh, id, employeeData) {
 }
 
 // create an new employee
-export function CreateEmployee(setRefresh, employeeData) {
-    setRefresh(false);
-
+export function CreateEmployee(employeeData) {
     EmployeeService.createEmployee(employeeData)
         .then(response => {
             console.log(response.data);
@@ -40,5 +38,6 @@ export function CreateEmployee(setRefresh, employeeData) {
         .catch(error => {
             console.log(error);
         });
+    
 }
 

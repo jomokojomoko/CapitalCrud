@@ -1,11 +1,10 @@
 //import statements
 import { Button } from "react-bootstrap";
 
-function AddEmployeeButton({setShowAddModal}){
+function AddEmployeeButton({setModalInfo}){
     
-    function addEmployee() {
-       
-            setShowAddModal(true);
+    function addEmployee() { 
+            setModalInfo([true,"Add"]);
     }
 
     return(
