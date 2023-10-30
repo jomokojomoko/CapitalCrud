@@ -7,11 +7,11 @@ import EmployeeRow from '../table/employeeRow';
 function EmployeeList({ deleteEmployeeData, setModalInfo, setUId, employeeData }) {
     //variables
     const [listItems, setListItems] = useState([]);
-    
+
     //map employee data into EmployeeRow objects and list items 
     //refreshses when employeeData is updated
     useEffect(() => {
-        if (employeeData.length != 0) {
+        if (employeeData != null) {
             setListItems(employeeData.map((employee) =>
                 <ListGroup.Item id={employee.id}>
                     <EmployeeRow deleteEmployeeData={deleteEmployeeData} employeeData={employee} setModalInfo={setModalInfo} setUId={setUId} />

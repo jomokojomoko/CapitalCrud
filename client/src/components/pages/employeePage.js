@@ -14,13 +14,13 @@ function EmployeePage() {
   // variables
   const [modalInfo, setModalInfo] = useState([false, ""]);
   const [uId, setUId] = useState(-1);
-  const [employeeData, setEmployeeData] = useState([]);
+  const [employeeData, setEmployeeData] = useState(null);
   // constants
   const headers = ["First Name", "Last Name", "Salary", ""];
 
   // populate employeeData
   function getEmployeeData() {
-    GetAllData(setEmployeeData);
+    GetAllData(setEmployeeData)
   }
 
   // update employeeData by adding or updating an employee
@@ -30,18 +30,21 @@ function EmployeePage() {
     } else {
       UpdateEmployee(uId, data);
     }
-    setEmployeeData([]);
+    setEmployeeData(null);
   }
 
   // delete a employee
   function deleteEmployeeData(id) {
     DeleteEmployee(id);
-    setEmployeeData([]);
+    if (employeeData.length === 1) {
+      setEmployeeData([]);
+    }
+    setEmployeeData(null);
   }
 
   // initialize employee data on start
   useEffect(() => {
-    if (employeeData.length == 0) {
+    if (employeeData == null) {
       getEmployeeData();
     }
   }, [employeeData]);
