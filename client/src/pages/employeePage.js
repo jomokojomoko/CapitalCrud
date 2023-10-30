@@ -4,11 +4,11 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 // import components
-import EmployeeList from '../lists/employeeList';
-import EmployeeModal from '../modals/employeeModal';
-import AddEmployeeButton from '../buttons/addEmployeeButton';
-import TitleRow from '../table/titleRow';
-import { CreateEmployee, DeleteEmployee, GetAllData, UpdateEmployee, } from '../../data/employeeData';
+import EmployeeList from '../components/lists/employeeList';
+import EmployeeModal from '../components/modals/employeeModal';
+import AddEmployeeButton from '../components/buttons/addEmployeeButton';
+import TitleRow from '../components/table/titleRow';
+import { CreateEmployee, DeleteEmployee, GetAllData, UpdateEmployee, } from '../data/employeeData';
 // the front page that is displayed that allows to view and edit employee table
 function EmployeePage() {
   // variables
@@ -27,7 +27,7 @@ function EmployeePage() {
   function updateEmployeeData(data) {
     if (modalInfo[1] === "Add") {
       CreateEmployee(data);
-    } else {
+    } else if(modalInfo[1]==="Update") {
       UpdateEmployee(uId, data);
     }
     setEmployeeData(null);
