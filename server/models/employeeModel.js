@@ -37,7 +37,7 @@ Employee.create = (newEmployee, result) => {
     });
 }
 
-// delete a employee with the given id
+// delete an employee with the given id
 Employee.remove = (id, result) => {
     sql.query("DELETE FROM employees WHERE id = ?", id, (err, res) => {
         if (err) {
@@ -49,6 +49,30 @@ Employee.remove = (id, result) => {
         console.log("deleted employee with id: ", id);
         result(null, res);
     });
+};
+
+// update an employee with the given id and employee
+Tutorial.updateById = (id, employee, result) => {
+    sql.query(
+        "UPDATE tutorials SET first_name = ?, last_name = ?, salary = ? WHERE id = ?",
+        [employee.first_name, employee.last_name, employee.salary, id],
+        (err, res) => {
+            if (err) {
+                console.log("error: ", err);
+                result(null, err);
+                return;
+            }
+
+            if (res.affectedRows == 0) {
+                // not found Tutorial with the id
+                result({ kind: "not_found" }, null);
+                return;
+            }
+
+            console.log("updated tutorial: ", { id: id, ...tutorial });
+            result(null, { id: id, ...tutorial });
+        }
+    );
 };
 
 module.exports = Employee;
