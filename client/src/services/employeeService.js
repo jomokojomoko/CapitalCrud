@@ -12,11 +12,13 @@ class EmployeeService{
       createEmployee(employeeData){
         return http.post("/employees",employeeData);
       }
-
+      
+      // delete a employee by id
       deleteEmployee(id){
         return http.delete("/employees/"+id);
       }
 
+      // update a employee by id and employeeData
       updateEmployee(id,employeeData){
         return http.put("/employees/"+id,employeeData);
       }
