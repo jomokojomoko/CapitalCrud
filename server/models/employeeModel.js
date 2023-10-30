@@ -52,9 +52,9 @@ Employee.remove = (id, result) => {
 };
 
 // update an employee with the given id and employee
-Tutorial.updateById = (id, employee, result) => {
+Employee.updateById = (id, employee, result) => {
     sql.query(
-        "UPDATE tutorials SET first_name = ?, last_name = ?, salary = ? WHERE id = ?",
+        "UPDATE employee SET first_name = ?, last_name = ?, salary = ? WHERE id = ?",
         [employee.first_name, employee.last_name, employee.salary, id],
         (err, res) => {
             if (err) {
@@ -63,14 +63,8 @@ Tutorial.updateById = (id, employee, result) => {
                 return;
             }
 
-            if (res.affectedRows == 0) {
-                // not found Tutorial with the id
-                result({ kind: "not_found" }, null);
-                return;
-            }
-
-            console.log("updated tutorial: ", { id: id, ...tutorial });
-            result(null, { id: id, ...tutorial });
+            console.log("updated employee: ", { id: id, ...employee });
+            result(null, { id: id, ...employee });
         }
     );
 };

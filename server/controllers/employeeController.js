@@ -54,7 +54,7 @@ exports.delete = (req, res) => {
 };
 
 // update a Employee identified by the id in the request
-exports.updateByID = (req, res) => {
+exports.updateById = (req, res) => {
     // Validate Request
     if (!req.body) {
         res.status(400).send({
