@@ -38,8 +38,10 @@ function EmployeePage() {
     DeleteEmployee(id);
     if (employeeData.length === 1) {
       setEmployeeData([]);
+    }else{
+      setEmployeeData(null);
+
     }
-    setEmployeeData(null);
   }
 
   // initialize employee data on start
