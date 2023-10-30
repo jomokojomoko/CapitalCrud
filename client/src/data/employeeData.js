@@ -4,24 +4,17 @@ import EmployeeService from '../services/employeeService';
 // this files purpose is to call employeeService.js and process the http calls provided
 
 // retrieve all the data and return data
-export function GetAllData(refresh, setRefresh) {
-    const [employeeData, setEmployeeData] = useState([]);
+export function GetAllData(setData) {
 
-    useEffect(() => {
-        if (refresh === true) {
-            setRefresh(false);
-        }
-        EmployeeService.getAll()
-            .then((response) => {
-                console.log(response.data);
-                setEmployeeData(response.data);
-            })
-            .catch(e => {
-                console.log(e);
-            });
-    }, [refresh]);
+    EmployeeService.getAll()
+        .then((response) => {
+            console.log(response.data);
+            setData(response.data);
+        })
+        .catch(e => {
+            console.log(e);
+        });
 
-    return employeeData;
 }
 
 // update an employee by id

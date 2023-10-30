@@ -7,14 +7,31 @@ import AddEmployeeButton from '../buttons/addEmployeeButton';
 import UpdateModal from '../modals/updateModal';
 import { Col, Container, Row } from 'react-bootstrap';
 import TitleRow from '../table/titleRow';
+import { GetAllData } from '../../data/employeeData';
 // the front page that is displayed that allows to view and edit employee table
 function EmployeePage() {
-  //variables
+  // variables
   const [showAddModal, setShowAddModal] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [refresh, setRefresh] = useState(false);
   const [uId, setUId] = useState(-1);
-  const headers = ["First Name", "Last Name", "Salary",""];
+  const [employeeData, setEmployeeData] = useState([]);
+  // constants
+  const headers = ["First Name", "Last Name", "Salary", ""];
+
+  // populate employeeData
+  function getEmployeeData() {
+    GetAllData(setEmployeeData);
+  }
+  useEffect(()=>{
+    getEmployeeData();
+
+  },[]);
+
+
+ 
+
+
   return (
     <div >
       <Container>
@@ -23,7 +40,7 @@ function EmployeePage() {
         <hr></hr>
         <EmployeeModal mShow={showAddModal} setRefresh={setRefresh} setShow={setShowAddModal} />
         <UpdateModal mShow={showUpdateModal} setRefresh={setRefresh} setShow={setShowUpdateModal} uId={uId} />
-        <EmployeeList setShowUpdateModal={setShowUpdateModal} setRefresh={setRefresh} refresh={refresh} setUId={setUId} />
+        <EmployeeList setShowUpdateModal={setShowUpdateModal} employeeData={employeeData} setRefresh={setRefresh} refresh={refresh} setUId={setUId} />
         <Row>
           <Col md={3} className="Button-Col">
             <div className='Add-Button'>
@@ -32,8 +49,6 @@ function EmployeePage() {
           </Col>
         </Row>
       </Container>
-
-
     </div>
   );
 }
