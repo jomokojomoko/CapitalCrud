@@ -8,15 +8,15 @@ import AddEmployeeButton from '../buttons/addEmployeeButton';
 function EmployeePage() {
   //variables
   const [showAddModal, setShowAddModal] = useState(false);
-  // load employee data
+  const [refresh, setRefresh] = useState(false);
 
 
   return (
     <div >
-      <EmployeeModal mShow={showAddModal} setShow={setShowAddModal} />
-      <EmployeeList />
+      <EmployeeModal mShow={showAddModal} setRefresh={setRefresh} setShow={setShowAddModal} />
+      <EmployeeList setRefresh={setRefresh} refresh={refresh}/>
       <div className="Add-Button">
-        <AddEmployeeButton  setShowAddModal={setShowAddModal} />
+        <AddEmployeeButton setShowAddModal={setShowAddModal} />
       </div>
     </div>
   );

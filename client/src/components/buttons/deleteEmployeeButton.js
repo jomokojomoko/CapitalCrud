@@ -4,7 +4,7 @@ import EmployeeService from "../../services/employeeService";
 // css import
 import "./button.css"
 
-function DeleteEmployeeButton({ dId, setDeleted }) {
+function DeleteEmployeeButton({ dId, setRefresh }) {
 
     function deleteEmployee() {
 
@@ -15,7 +15,7 @@ function DeleteEmployeeButton({ dId, setDeleted }) {
             }).catch(e => {
                 console.log(e);
             });
-        setDeleted(true);
+        setRefresh(true);
 
     }
 

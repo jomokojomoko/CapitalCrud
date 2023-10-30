@@ -7,27 +7,21 @@ import EmployeeRow from '../table/employeeRow';
 import { GetAllData } from '../../data/employeeData';
 
 // creates a react-bootstrap list component displaying Employee Data
-function EmployeeList() {
+function EmployeeList({ setRefresh, refresh }) {
     //variables
     const [listItems, setListItems] = useState([]);
-    const [deleted, setDeleted] = useState(false);
     //Pull Employee Data and push it into listItems as an array of ListGroup.Item
-    const employeeData = GetAllData();
+    const employeeData = GetAllData(refresh,setRefresh);
 
     useEffect(() => {
-        if (deleted === true) {
-            setDeleted(false);
-        } else {
-            console.log(employeeData);
-            setListItems(employeeData.map((employee) =>
-                <ListGroup.Item id={employee.id}>
-                    <EmployeeRow setDeleted={setDeleted} employeeData={employee} />
-                </ListGroup.Item>
-            ));
-        }
+        console.log(employeeData);
+        setListItems(employeeData.map((employee) =>
+            <ListGroup.Item id={employee.id}>
+                <EmployeeRow setRefresh={setRefresh} employeeData={employee} />
+            </ListGroup.Item>
+        ));
 
-
-    }, [deleted, employeeData]);
+    }, [employeeData]);
 
 
 

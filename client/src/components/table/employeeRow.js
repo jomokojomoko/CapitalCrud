@@ -5,11 +5,11 @@ import DeleteEmployeeButton from "../buttons/deleteEmployeeButton";
 import Row from 'react-bootstrap/Row';
 
 //All the components that is part of a row for employmentList
-function EmployeeRow({ employeeData, setDeleted }) {
+function EmployeeRow({ employeeData, setRefresh }) {
 
     return (
         <Row>
-            <Col >{employeeData["first_name"]}</Col><Col>{employeeData["last_name"]}</Col><Col>{employeeData["salary"]}</Col><Col><DeleteEmployeeButton dId={employeeData.id} setDeleted={setDeleted} /></Col>
+            <Col >{employeeData["first_name"]}</Col><Col>{employeeData["last_name"]}</Col><Col>{employeeData["salary"]}</Col><Col><DeleteEmployeeButton dId={employeeData.id} setRefresh={setRefresh} /></Col>
         </Row>
     );
 

@@ -3,18 +3,19 @@ import Modal from 'react-bootstrap/Modal';
 import EmployeeService from '../../services/employeeService';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
-function EmployeeModal({ mShow, setShow }) {
+function EmployeeModal({ mShow, setShow, setRefresh }) {
     //set variables
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [salary, setSalary] = useState("");
+
     function handleClose() {
         setShow(false);
     };
-    function handleSubmit(event) 
-    {
+
+    function handleSubmit(event) {
+
         event.preventDefault();
-        console.log("hi");
         var data = {
             salary: salary,
             first_name: firstName,
@@ -28,14 +29,13 @@ function EmployeeModal({ mShow, setShow }) {
             .catch(error => {
                 console.log(error);
             });
-
+        
+        setRefresh(true);
         setShow(false);
         setFirstName("");
         setLastName("");
         setSalary("");
     }
-
-
 
     function onSalaryChange(event) {
         setSalary(event.target.value)
