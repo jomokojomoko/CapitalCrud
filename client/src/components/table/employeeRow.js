@@ -7,10 +7,15 @@ import Row from 'react-bootstrap/Row';
 
 //All the components that is part of a row for employmentList
 function EmployeeRow({ employeeData, setRefresh, setShowUpdateModal, setUId }) {
+    const formattedSalary = employeeData.salary.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0,
+      });
 
     return (
         <Row>
-            <Col >{employeeData["first_name"]}</Col><Col>{employeeData["last_name"]}</Col><Col>{employeeData["salary"]}</Col><Col><UpdateEmployeeButton setUId={setUId} uId={employeeData.id} setShowUpdateModal={setShowUpdateModal}/><DeleteEmployeeButton dId={employeeData.id} setRefresh={setRefresh} /></Col>
+            <Col >{employeeData["first_name"]}</Col><Col>{employeeData["last_name"]}</Col><Col>{formattedSalary}</Col><Col><UpdateEmployeeButton setUId={setUId} uId={employeeData.id} setShowUpdateModal={setShowUpdateModal}/><DeleteEmployeeButton dId={employeeData.id} setRefresh={setRefresh} /></Col>
         </Row>
     );
 
