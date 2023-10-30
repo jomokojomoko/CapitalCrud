@@ -7,7 +7,7 @@ import EmployeeRow from '../table/employeeRow';
 import { GetAllData } from '../../data/employeeData';
 
 // creates a react-bootstrap list component displaying Employee Data
-function EmployeeList({ setRefresh, refresh, setModalInfo, setUId, employeeData }) {
+function EmployeeList({ deleteEmployeeData, setModalInfo, setUId, employeeData }) {
     //variables
     const [listItems, setListItems] = useState([]);
     //Pull Employee Data and push it into listItems as an array of ListGroup.Item
@@ -15,7 +15,7 @@ function EmployeeList({ setRefresh, refresh, setModalInfo, setUId, employeeData 
         console.log(employeeData);
         setListItems(employeeData.map((employee) =>
             <ListGroup.Item id={employee.id}>
-                <EmployeeRow setRefresh={setRefresh} employeeData={employee} setModalInfo={setModalInfo} setUId={setUId} />
+                <EmployeeRow deleteEmployeeData={deleteEmployeeData} employeeData={employee} setModalInfo={setModalInfo} setUId={setUId} />
             </ListGroup.Item>
         ));
 

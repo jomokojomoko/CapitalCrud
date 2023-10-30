@@ -18,8 +18,8 @@ export function GetAllData(setData) {
 }
 
 // update an employee by id
-export function UpdateEmployee( id, employeeData) {
-    
+export function UpdateEmployee(id, employeeData) {
+
     EmployeeService.updateEmployee(id, employeeData)
         .then((response) => {
             console.log(response.data);
@@ -38,6 +38,15 @@ export function CreateEmployee(employeeData) {
         .catch(error => {
             console.log(error);
         });
-    
+
 }
 
+// delete an employee by id
+export function DeleteEmployee(id) {
+    EmployeeService.deleteEmployee(id)
+        .then(response => {
+            console.log(response.data)
+        }).catch(e => {
+            console.log(e);
+        });
+}

@@ -6,7 +6,7 @@ import EmployeeModal from '../modals/employeeModal';
 import AddEmployeeButton from '../buttons/addEmployeeButton';
 import { Col, Container, Row } from 'react-bootstrap';
 import TitleRow from '../table/titleRow';
-import { CreateEmployee, GetAllData, UpdateEmployee, } from '../../data/employeeData';
+import { CreateEmployee, DeleteEmployee, GetAllData, UpdateEmployee, } from '../../data/employeeData';
 // the front page that is displayed that allows to view and edit employee table
 function EmployeePage() {
   // variables
@@ -33,6 +33,12 @@ function EmployeePage() {
     setEmployeeData([]);
   }
 
+  // delete employee
+  function deleteEmployeeData(id){
+    DeleteEmployee(id);
+    setEmployeeData([]);
+  }
+
 
   // initialize employee data on start
   useEffect(() => {
@@ -49,7 +55,7 @@ function EmployeePage() {
         <TitleRow headers={headers} />
         <hr></hr>
         <EmployeeModal modalInfo={modalInfo} setModalInfo={setModalInfo} updateList={updateEmployeeData} />
-        <EmployeeList setModalInfo={setModalInfo} employeeData={employeeData} setRefresh={setRefresh} refresh={refresh} setUId={setUId} />
+        <EmployeeList setModalInfo={setModalInfo} deleteEmployeeData={deleteEmployeeData} employeeData={employeeData} setUId={setUId} />
         <Row>
           <Col md={3} className="Button-Col">
             <div className='Add-Button'>

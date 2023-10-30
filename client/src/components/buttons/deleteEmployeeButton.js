@@ -4,21 +4,10 @@ import EmployeeService from "../../services/employeeService";
 // css import
 import "./button.css"
 
-function DeleteEmployeeButton({ dId, setRefresh }) {
-
-    function deleteEmployee() {
-
-
-        EmployeeService.deleteEmployee(dId)
-            .then(response => {
-                console.log(response.data)
-            }).catch(e => {
-                console.log(e);
-            });
-        setRefresh(true);
-
+function DeleteEmployeeButton({ dId, deleteEmployeeData }) {
+    function deleteEmployee(){
+        deleteEmployeeData(dId);
     }
-
     return (
         <Button className="Delete-Button" onClick={deleteEmployee}>Delete</Button>
     );
