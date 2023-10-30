@@ -1,13 +1,13 @@
-//import statements
+//import packages
 import { Button } from "react-bootstrap";
-
-function AddEmployeeButton({setModalInfo}){
-    
-    function addEmployee() { 
-            setModalInfo([true,"Add"]);
+// button that displays add modal
+function AddEmployeeButton({ setModalInfo }) {
+    // sets modal config info
+    function addEmployee() {
+        setModalInfo([true, "Add"]);
     }
-
-    return(
+    
+    return (
         <Button onClick={addEmployee}>Add Employee</Button>
     );
 }

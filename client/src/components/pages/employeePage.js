@@ -1,17 +1,18 @@
-// import statements
+// imports css
 import './App.css';
+// import packages
 import { useEffect, useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+// import components
 import EmployeeList from '../lists/employeeList';
 import EmployeeModal from '../modals/employeeModal';
 import AddEmployeeButton from '../buttons/addEmployeeButton';
-import { Col, Container, Row } from 'react-bootstrap';
 import TitleRow from '../table/titleRow';
 import { CreateEmployee, DeleteEmployee, GetAllData, UpdateEmployee, } from '../../data/employeeData';
 // the front page that is displayed that allows to view and edit employee table
 function EmployeePage() {
   // variables
-  const [modalInfo, setModalInfo] = useState([false,""]);
-  const [refresh, setRefresh] = useState(false);
+  const [modalInfo, setModalInfo] = useState([false, ""]);
   const [uId, setUId] = useState(-1);
   const [employeeData, setEmployeeData] = useState([]);
   // constants
@@ -22,31 +23,28 @@ function EmployeePage() {
     GetAllData(setEmployeeData);
   }
 
-  // update employee
- function updateEmployeeData(data){
-    if(modalInfo[1]==="Add"){
+  // update employeeData by adding or updating an employee
+  function updateEmployeeData(data) {
+    if (modalInfo[1] === "Add") {
       CreateEmployee(data);
-
-    }else{
-      UpdateEmployee(uId,data);
+    } else {
+      UpdateEmployee(uId, data);
     }
     setEmployeeData([]);
   }
 
-  // delete employee
-  function deleteEmployeeData(id){
+  // delete a employee
+  function deleteEmployeeData(id) {
     DeleteEmployee(id);
     setEmployeeData([]);
   }
 
-
   // initialize employee data on start
   useEffect(() => {
-    if(employeeData.length==0){
+    if (employeeData.length == 0) {
       getEmployeeData();
     }
   }, [employeeData]);
-
 
   return (
     <div >

@@ -1,14 +1,14 @@
 .Delete-Button {
     border: none;
     background: none;
-    color:red;
+    color: red;
     font-weight: 700;
 }
 
 .Edit-Button {
     border: none;
     background: none;
-    color:orange;
+    color: orange;
     font-weight: 700;
-    margin-right:10px;
+    margin-right: 10px;
 }

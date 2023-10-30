@@ -24,20 +24,24 @@
   color: white;
 }
 
-.Add-Button{
+.Add-Button {
   text-align: right;
 
 }
+
 .App-link {
   color: #61dafb;
 }
-.Button-Col{
+
+.Button-Col {
   margin-left: auto;
 }
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

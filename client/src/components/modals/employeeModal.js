@@ -1,34 +1,37 @@
+// import packages
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
-function EmployeeModal({ setModalInfo, modalInfo, updateList}) {
+// modal that adds or edits employees
+function EmployeeModal({ setModalInfo, modalInfo, updateList }) {
     //set variables
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [salary, setSalary] = useState("");
 
+    //close modal
     function handleClose() {
-        setModalInfo([false,""]);
+        setModalInfo([false, ""]);
     };
 
+    //updates employee list and resets modal forms
     function handleSubmit(event) {
-
+        //prevent page from resetting on submit
         event.preventDefault();
         var data = {
             salary: salary,
             first_name: firstName,
             last_name: lastName
         };
-
         updateList(data);
-
-        setModalInfo([false,""]);
+        setModalInfo([false, ""]);
         setFirstName("");
         setLastName("");
         setSalary("");
     }
 
+    //functions for updating form values
     function onSalaryChange(event) {
         setSalary(event.target.value)
     }

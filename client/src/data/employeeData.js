@@ -1,11 +1,8 @@
 // import statements
-import { useEffect, useState } from 'react';
 import EmployeeService from '../services/employeeService';
 // this files purpose is to call employeeService.js and process the http calls provided
-
 // retrieve all the data and return data
 export function GetAllData(setData) {
-
     EmployeeService.getAll()
         .then((response) => {
             console.log(response.data);
@@ -14,12 +11,10 @@ export function GetAllData(setData) {
         .catch(e => {
             console.log(e);
         });
-
 }
 
 // update an employee by id
 export function UpdateEmployee(id, employeeData) {
-
     EmployeeService.updateEmployee(id, employeeData)
         .then((response) => {
             console.log(response.data);
@@ -38,7 +33,6 @@ export function CreateEmployee(employeeData) {
         .catch(error => {
             console.log(error);
         });
-
 }
 
 // delete an employee by id

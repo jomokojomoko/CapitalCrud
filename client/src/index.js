@@ -6,6 +6,7 @@ import EmployeePage from './components/pages/employeePage';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 
+//renders EmployeePage as root path
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

@@ -1,5 +1,5 @@
+// import connection
 const sql = require("./index.js");
-
 // constructor
 const Employee = function (employee) {
     this.first_name = employee.first_name;
@@ -17,7 +17,7 @@ Employee.getAll = result => {
             result(null, err);
             return;
         }
-
+        // log and return results
         console.log("employees: ", res);
         result(null, res);
     });
@@ -31,7 +31,7 @@ Employee.create = (newEmployee, result) => {
             result(err, null);
             return;
         }
-
+        // log and return results
         console.log("created employees: ", { id: res.insertId, ...newEmployee });
         result(null, { id: res.insertId, ...newEmployee });
     });
@@ -45,7 +45,7 @@ Employee.remove = (id, result) => {
             result(null, err);
             return;
         }
-
+        // log and return results
         console.log("deleted employee with id: ", id);
         result(null, res);
     });
@@ -62,7 +62,7 @@ Employee.updateById = (id, employee, result) => {
                 result(null, err);
                 return;
             }
-
+            // log and return results
             console.log("updated employee: ", { id: id, ...employee });
             result(null, { id: id, ...employee });
         }

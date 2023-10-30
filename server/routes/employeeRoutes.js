@@ -9,12 +9,12 @@ module.exports = app => {
     // create a new employee
     router.post("/", employee.create);
 
-     // update a employee with id
-     router.put("/:id", employee.updateById);
+    // update a employee with id
+    router.put("/:id", employee.updateById);
 
     // delete a employee with id header
     router.delete("/:id", employee.delete);
-
+    
     // initialize router and route
     app.use('/api/employees', router);
 };

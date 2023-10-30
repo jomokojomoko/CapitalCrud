@@ -4,7 +4,6 @@ const cors = require("cors");
 
 //initialize variables
 const app = express();
-
 var corsOptions = {
   origin: "http://localhost:3000"
 };
@@ -18,6 +17,7 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
+// add employee routes to express router
 require("./server/routes/employeeRoutes.js")(app);
 
 // set port, listen for requests

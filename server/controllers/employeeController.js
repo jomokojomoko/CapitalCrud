@@ -1,8 +1,9 @@
+// import database methods
 const Employee = require('../models/employeeModel.js');
 
 // retrieve all employees from database
 exports.getAll = (req, res) => {
-
+    
     Employee.getAll((err, data) => {
         if (err)
             res.status(500).send({
@@ -13,7 +14,7 @@ exports.getAll = (req, res) => {
     });
 };
 
-// create and save a new r,[;purr]
+// create and save a new employee
 exports.create = (req, res) => {
     // Validate request
     if (!req.body) {
@@ -23,11 +24,7 @@ exports.create = (req, res) => {
     }
 
     // Create a employee
-    const employee = new Employee({
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        salary: req.body.salary
-    });
+    const employee = new Employee(req.body);
 
     // save employee in the database
     Employee.create(employee, (err, data) => {
@@ -44,11 +41,9 @@ exports.create = (req, res) => {
 exports.delete = (req, res) => {
     Employee.remove(req.params.id, (err, data) => {
         if (err) {
-
             res.status(500).send({
                 message: "Could not delete employee with id " + req.params.id
             });
-
         } else res.send({ message: `Employee was deleted successfully!` });
     });
 };
@@ -62,18 +57,14 @@ exports.updateById = (req, res) => {
         });
     }
 
-    console.log(req.body);
-
     Employee.updateById(
         req.params.id,
         new Employee(req.body),
         (err, data) => {
             if (err) {
-
                 res.status(500).send({
                     message: "Error updating employee with id " + req.params.id
                 });
-
             } else res.send(data);
         }
     );
