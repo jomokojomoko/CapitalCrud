@@ -23,6 +23,21 @@ Employee.getAll = result => {
     });
 };
 
+// get employee data for the selected page
+Employee.getPageData = (page, amount, result) => {
+    sql.query('SELECT * FROM employees LIMIT ' + amount + ' OFFSET ' + (page - 1) * amount, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
+        }
+        // log and return results
+        console.log("Returning page " + page + " results", res);
+        result(null, res);
+
+    });
+};
+
 // create a employee from information in newEmployee
 Employee.create = (newEmployee, result) => {
     sql.query("INSERT INTO employees SET ?", newEmployee, (err, res) => {

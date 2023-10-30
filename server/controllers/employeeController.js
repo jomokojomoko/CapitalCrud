@@ -14,6 +14,19 @@ exports.getAll = (req, res) => {
     });
 };
 
+// get the employee data needed for one page
+exports.getPageData = (req, res) => {
+    // get page data from database
+    Employee.getPageData(req.params.page, req.params.amount, (err, data) => {
+        if (err)
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving employees."
+            });
+        else res.send(data);
+    });
+}
+
 // create and save a new employee
 exports.create = (req, res) => {
     // Validate request
@@ -69,3 +82,4 @@ exports.updateById = (req, res) => {
         }
     );
 };
+

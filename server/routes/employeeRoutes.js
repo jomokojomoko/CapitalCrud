@@ -6,6 +6,9 @@ module.exports = app => {
     // retrieve all employees
     router.get("/", employee.getAll);
 
+    // retrieve amount of employees offset by page*amount 
+    router.get("/:page/:amount", employee.getPageData);
+
     // create a new employee
     router.post("/", employee.create);
 
@@ -14,7 +17,7 @@ module.exports = app => {
 
     // delete a employee with id header
     router.delete("/:id", employee.delete);
-    
+
     // initialize router and route
     app.use('/api/employees', router);
 };
