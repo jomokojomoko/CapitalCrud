@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
+import EmployeeModalForm from '../forms/employeeModalForm';
 // modal that adds or edits employees
 function EmployeeModal({ setModalInfo, modalInfo, updateList }) {
     //set variables
@@ -31,19 +32,6 @@ function EmployeeModal({ setModalInfo, modalInfo, updateList }) {
         setSalary("");
     }
 
-    //functions for updating form values
-    function onSalaryChange(event) {
-        setSalary(event.target.value)
-    }
-
-    function onLastChange(event) {
-        setLastName(event.target.value)
-    }
-
-    function onFirstChange(event) {
-        setFirstName(event.target.value)
-    }
-
     return (
         <Modal show={modalInfo[0]} onHide={handleClose}>
             <Modal.Header closeButton>
@@ -51,47 +39,20 @@ function EmployeeModal({ setModalInfo, modalInfo, updateList }) {
             </Modal.Header>
             <Form onSubmit={handleSubmit}>
                 <Modal.Body>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>First Name</Form.Label>
-                        <Form.Control
-                            placeholder="Enter the first name"
-                            autoFocus
-                            value={firstName}
-                            onChange={onFirstChange}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Last Name</Form.Label>
-                        <Form.Control
-                            placeholder="Enter the last name"
-                            autoFocus
-                            value={lastName}
-                            onChange={onLastChange}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Salary</Form.Label>
-                        <Form.Control
-                            placeholder="Enter the salary"
-                            autoFocus
-                            value={salary}
-                            onChange={onSalaryChange}
-                            required
-                        />
-                    </Form.Group>
+                    <EmployeeModalForm label="First Name" value={firstName} placeholder="Enter your first name" setValue={setFirstName} type="text" />
+                    <EmployeeModalForm label="Last Name" value={lastName} placeholder="Enter your last name" setValue={setLastName} type="text" />
+                    <EmployeeModalForm label="Salary" value={salary} placeholder="Enter your salary" setValue={setSalary} type="number"/>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" type="submit">
-                        {modalInfo[1]} Employee
-                    </Button>
-                </Modal.Footer>
-            </Form>
-        </Modal>
+                    Close
+                </Button>
+                <Button variant="primary" type="submit">
+                    {modalInfo[1]} Employee
+                </Button>
+            </Modal.Footer>
+        </Form>
+        </Modal >
     );
 }
 
