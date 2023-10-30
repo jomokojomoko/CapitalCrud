@@ -5,3 +5,10 @@
     font-weight: 700;
 }
 
+.Edit-Button {
+    border: none;
+    background: none;
+    color:orange;
+    font-weight: 700;
+    margin-right:10px;
+}

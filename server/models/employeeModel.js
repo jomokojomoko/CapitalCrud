@@ -18,7 +18,7 @@ Employee.getAll = result => {
             return;
         }
 
-        console.log("employees: ", res);
+        //console.log("employees: ", res);
         result(null, res);
     });
 };
@@ -54,7 +54,7 @@ Employee.remove = (id, result) => {
 // update an employee with the given id and employee
 Employee.updateById = (id, employee, result) => {
     sql.query(
-        "UPDATE employee SET first_name = ?, last_name = ?, salary = ? WHERE id = ?",
+        "UPDATE employees SET first_name = ?, last_name = ?, salary = ? WHERE id = ?",
         [employee.first_name, employee.last_name, employee.salary, id],
         (err, res) => {
             if (err) {

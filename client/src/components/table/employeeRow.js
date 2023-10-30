@@ -2,14 +2,15 @@
 import { useEffect } from "react";
 import Col from 'react-bootstrap/Col';
 import DeleteEmployeeButton from "../buttons/deleteEmployeeButton";
+import UpdateEmployeeButton from "../buttons/updateEmployeeButton";
 import Row from 'react-bootstrap/Row';
 
 //All the components that is part of a row for employmentList
-function EmployeeRow({ employeeData, setRefresh }) {
+function EmployeeRow({ employeeData, setRefresh, setShowUpdateModal, setUId }) {
 
     return (
         <Row>
-            <Col >{employeeData["first_name"]}</Col><Col>{employeeData["last_name"]}</Col><Col>{employeeData["salary"]}</Col><Col><DeleteEmployeeButton dId={employeeData.id} setRefresh={setRefresh} /></Col>
+            <Col >{employeeData["first_name"]}</Col><Col>{employeeData["last_name"]}</Col><Col>{employeeData["salary"]}</Col><Col><UpdateEmployeeButton setUId={setUId} uId={employeeData.id} setShowUpdateModal={setShowUpdateModal}/><DeleteEmployeeButton dId={employeeData.id} setRefresh={setRefresh} /></Col>
         </Row>
     );
 

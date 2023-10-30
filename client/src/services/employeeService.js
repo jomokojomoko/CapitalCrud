@@ -16,6 +16,10 @@ class EmployeeService{
       deleteEmployee(id){
         return http.delete("/employees/"+id);
       }
+
+      updateEmployee(id,employeeData){
+        return http.put("/employees/"+id,employeeData);
+      }
 }
 
 export default new EmployeeService();
