@@ -18,6 +18,7 @@ function EmployeePage() {
   return (
     <div >
       <Container>
+        <h1>Employees</h1>
         <TitleRow headers={headers} />
         <hr></hr>
         <EmployeeModal mShow={showAddModal} setRefresh={setRefresh} setShow={setShowAddModal} />

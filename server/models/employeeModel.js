@@ -18,7 +18,7 @@ Employee.getAll = result => {
             return;
         }
 
-        //console.log("employees: ", res);
+        console.log("employees: ", res);
         result(null, res);
     });
 };
