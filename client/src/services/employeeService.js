@@ -12,6 +12,11 @@ class EmployeeService {
     return http.get("/employees/"+page+"/"+amount);
   }
 
+  // retrieve employee count
+  getCount(){
+    return http.get("/employees/count");
+  }
+
   // create a new employee
   createEmployee(employeeData) {
     return http.post("/employees", employeeData);

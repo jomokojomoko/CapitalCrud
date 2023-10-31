@@ -25,6 +25,18 @@ export function GetPageData(page, amount, setData) {
         });
 }
 
+// retrieve a pages data and return its to the state passed in
+export function GetCount(setCount) {
+    EmployeeService.getCount(page, amount)
+        .then(response => {
+            console.log(response.data);
+            setCount(response.data);
+        })
+        .catch(e => {
+            console.log(e);
+        });
+}
+
 // update an employee by id
 export function UpdateEmployee(id, employeeData) {
     EmployeeService.updateEmployee(id, employeeData)
