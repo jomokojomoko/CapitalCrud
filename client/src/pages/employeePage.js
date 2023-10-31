@@ -20,7 +20,7 @@ function EmployeePage() {
 
   // constants
   const headers = ["First Name", "Last Name", "Salary", ""];
-  const numPerPage = 5;
+  const numPerPage = 10;
 
   // populate employeeData and Count
   const employeeData = GetPageData(page, numPerPage, refresh, setRefresh);

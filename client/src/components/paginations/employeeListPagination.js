@@ -3,13 +3,15 @@ import { useEffect, useState } from 'react';
 import Pagination from 'react-bootstrap/Pagination';
 
 // pagination component for the employee list
-function EmployeeListPagination({ numPerPage, numItems, page, changePage}) {
+function EmployeeListPagination({ numPerPage, numItems, page, changePage }) {
     // variables
     let items = [];
-
     // used to set the active page
     function setActive(count) {
-        changePage(count);
+        if (count >= 1 && count <= ((numItems - 1) / numPerPage)+1) {
+            changePage(count);
+
+        }
     }
 
     // create the paginiation items to put in the pagination
@@ -23,7 +25,7 @@ function EmployeeListPagination({ numPerPage, numItems, page, changePage}) {
 
     return (
         <Pagination>
-            <Pagination.Prev hidden={true} /> {items}  <Pagination.Next  />
+            <Pagination.Prev onClick={() => setActive(page - 1)} /> {items}  <Pagination.Next onClick={() => setActive(page + 1)} />
         </Pagination>
     );
 }
