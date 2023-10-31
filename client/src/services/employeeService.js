@@ -7,6 +7,11 @@ class EmployeeService {
     return http.get("/employees");
   }
 
+  // retrieve employee data for one page
+  getPageData(page,amount){
+    return http.get("/employees/"+page+"/"+amount);
+  }
+
   // create a new employee
   createEmployee(employeeData) {
     return http.post("/employees", employeeData);
