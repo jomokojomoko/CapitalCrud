@@ -16,46 +16,35 @@ function EmployeePage() {
   const [modalInfo, setModalInfo] = useState([false, ""]);
   const [uId, setUId] = useState(-1);
   const [page, setPage] = useState(1);
-  const [employeeCount, setEmployeeCount] = useState(0);
-  const [employeeData, setEmployeeData] = useState(null);
+  const [refresh, setRefresh] = useState(false);
+
   // constants
   const headers = ["First Name", "Last Name", "Salary", ""];
   const numPerPage = 5;
 
-  // populate employeeData
-  function getEmployeeData() {
-    GetCount(setEmployeeCount);
-    console.log(employeeCount);
-    GetPageData(page, numPerPage, setEmployeeData);
-  }
+  // populate employeeData and Count
+  const employeeData = GetPageData(page, numPerPage, refresh, setRefresh);
+  const employeeCount = GetCount(refresh, setRefresh);
 
   // update employeeData by adding or updating an employee
   function updateEmployeeData(data) {
     if (modalInfo[1] === "Add") {
-      CreateEmployee(data);
+      CreateEmployee(data, setRefresh);
     } else if (modalInfo[1] === "Update") {
-      UpdateEmployee(uId, data);
+      UpdateEmployee(uId, data, setRefresh);
     }
-    setEmployeeData(null);
   }
 
   // delete a employee
   function deleteEmployeeData(id) {
-    DeleteEmployee(id);
-    if (employeeData.length === 1) {
-      setEmployeeData([]);
-    } else {
-      setEmployeeData(null);
-
-    }
+    DeleteEmployee(id, setRefresh);
   }
 
-  // initialize employee data on start
-  useEffect(() => {
-    if (employeeData == null) {
-      getEmployeeData();
-    }
-  }, [employeeData]);
+  // called when a page is selected on the pagination
+  function changePage(page) {
+    setPage(page);
+    setRefresh(true);
+  }
 
   return (
     <div >
@@ -65,7 +54,7 @@ function EmployeePage() {
         <hr></hr>
         <EmployeeModal modalInfo={modalInfo} setModalInfo={setModalInfo} updateList={updateEmployeeData} />
         <EmployeeList setModalInfo={setModalInfo} deleteEmployeeData={deleteEmployeeData} employeeData={employeeData} setUId={setUId} />
-        <EmployeeListPagination numPerPage={numPerPage} setPage={setPage} numItems={employeeCount} />
+        <EmployeeListPagination numPerPage={numPerPage} numItems={employeeCount} page={page} changePage={changePage} />
         <Row>
           <Col md={3} className="Button-Col">
             <div className='Add-Button'>

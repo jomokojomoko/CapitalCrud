@@ -1,3 +1,4 @@
+// import packages
 import Form from 'react-bootstrap/Form';
 
 // form entry component for EmployeeModal
@@ -6,9 +7,7 @@ function EmployeeModalForm({ label, placeholder, setValue, value, type }) {
     function onValueChange(event) {
         setValue(event.target.value)
     }
-    if(type==="number"){
-        const step=1;
-    }
+    
     return (
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>{label}</Form.Label>
@@ -16,7 +15,6 @@ function EmployeeModalForm({ label, placeholder, setValue, value, type }) {
                 placeholder={placeholder}
                 autoFocus
                 type={type}
-                step
                 value={value}
                 onChange={onValueChange}
                 required

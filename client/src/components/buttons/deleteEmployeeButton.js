@@ -6,9 +6,10 @@ import "./button.css"
 function DeleteEmployeeButton({ dId, deleteEmployeeData }) {
     // calls function from employeePage.js to delete employee
     function deleteEmployee() {
+       
         deleteEmployeeData(dId);
     }
-    
+
     return (
         <Button className="Delete-Button" onClick={deleteEmployee}>Delete</Button>
     );

@@ -12,7 +12,7 @@ function EmployeeRow({ employeeData, deleteEmployeeData, setModalInfo, setUId })
         currency: 'USD',
         minimumFractionDigits: 0,
     });
-    
+
     return (
         <Row>
             <Col >{employeeData["first_name"]}</Col><Col>{employeeData["last_name"]}</Col><Col>{formattedSalary}</Col><Col><UpdateEmployeeButton setUId={setUId} uId={employeeData.id} setModalInfo={setModalInfo} /><DeleteEmployeeButton dId={employeeData.id} deleteEmployeeData={deleteEmployeeData} /></Col>
