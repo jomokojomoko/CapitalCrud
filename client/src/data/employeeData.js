@@ -3,16 +3,25 @@ import EmployeeService from '../services/employeeService';
 // import packages
 import { useEffect, useState } from 'react';
 // this files purpose is to call employeeService.js and process the http calls provided
+
 // retrieve all the data and return data to the state passed in
-export function GetAllData(setData) {
-    EmployeeService.getAll()
-        .then((response) => {
-            console.log(response.data);
-            setData(response.data);
-        })
-        .catch(e => {
-            console.log(e);
-        },);
+// function currently not being used, but is bug free and ready to use
+export function GetAllData(refresh, setRefresh) {
+    const [allData, setAllData] = useState([]);
+    useEffect(() => {
+        if (refresh === true) {
+            setRefresh(false);
+        }
+        EmployeeService.getAll()
+            .then((response) => {
+                console.log(response.data);
+                setAllData(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            },);
+    }, [refresh]);
+    return allData;
 }
 
 // retrieve a pages data and return its to the state passed in
