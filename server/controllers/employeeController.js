@@ -27,6 +27,18 @@ exports.getPageData = (req, res) => {
     });
 }
 
+// return the total employee count to the client
+exports.getCount = (req, res) => {
+    Employee.getCount((err, data) => {
+        if (err)
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving tutorials."
+            });
+        else res.send(data);
+    });
+};
+
 // create and save a new employee
 exports.create = (req, res) => {
     // Validate request

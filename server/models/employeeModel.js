@@ -38,6 +38,22 @@ Employee.getPageData = (page, amount, result) => {
     });
 };
 
+
+// get employee count from database
+Employee.getCount = result => {
+    sql.query('SELECT COUNT(*) as count FROM employees', (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
+        }
+        // log and return results
+        console.log("Count of Tutorials", res);
+        result(null, res);
+    });
+
+};
+
 // create a employee from information in newEmployee
 Employee.create = (newEmployee, result) => {
     sql.query("INSERT INTO employees SET ?", newEmployee, (err, res) => {

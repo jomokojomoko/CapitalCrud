@@ -9,6 +9,9 @@ module.exports = app => {
     // retrieve amount of employees offset by page*amount 
     router.get("/:page/:amount", employee.getPageData);
 
+    // get the count of employees 
+    router.get("/count", employee.getCount)
+
     // create a new employee
     router.post("/", employee.create);
 
