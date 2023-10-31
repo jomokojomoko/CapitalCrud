@@ -48,7 +48,7 @@ Employee.getCount = result => {
             return;
         }
         // log and return results
-        console.log("Count of Tutorials", res);
+        console.log("Count of employees", res);
         result(null, res);
     });
 

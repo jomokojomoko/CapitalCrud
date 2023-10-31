@@ -27,10 +27,10 @@ export function GetPageData(page, amount, setData) {
 
 // retrieve a pages data and return its to the state passed in
 export function GetCount(setCount) {
-    EmployeeService.getCount(page, amount)
+    EmployeeService.getCount(setCount)
         .then(response => {
             console.log(response.data);
-            setCount(response.data);
+            setCount(response.data[0].count);
         })
         .catch(e => {
             console.log(e);

@@ -8,7 +8,7 @@ import EmployeeList from '../components/lists/employeeList';
 import EmployeeModal from '../components/modals/employeeModal';
 import AddEmployeeButton from '../components/buttons/addEmployeeButton';
 import TitleRow from '../components/table/titleRow';
-import { CreateEmployee, DeleteEmployee, GetAllData, UpdateEmployee, } from '../data/employeeData';
+import { CreateEmployee, DeleteEmployee, GetCount, GetPageData, UpdateEmployee, } from '../data/employeeData';
 import EmployeeListPagination from '../components/paginations/employeeListPagination';
 // the front page that is displayed that allows to view and edit employee table
 function EmployeePage() {
@@ -16,6 +16,7 @@ function EmployeePage() {
   const [modalInfo, setModalInfo] = useState([false, ""]);
   const [uId, setUId] = useState(-1);
   const [page, setPage] = useState(1);
+  const [employeeCount, setEmployeeCount] = useState(0);
   const [employeeData, setEmployeeData] = useState(null);
   // constants
   const headers = ["First Name", "Last Name", "Salary", ""];
@@ -23,7 +24,9 @@ function EmployeePage() {
 
   // populate employeeData
   function getEmployeeData() {
-    GetAllData(setEmployeeData)
+    GetCount(setEmployeeCount);
+    console.log(employeeCount);
+    GetPageData(page, numPerPage, setEmployeeData);
   }
 
   // update employeeData by adding or updating an employee
@@ -62,7 +65,7 @@ function EmployeePage() {
         <hr></hr>
         <EmployeeModal modalInfo={modalInfo} setModalInfo={setModalInfo} updateList={updateEmployeeData} />
         <EmployeeList setModalInfo={setModalInfo} deleteEmployeeData={deleteEmployeeData} employeeData={employeeData} setUId={setUId} />
-        <EmployeeListPagination numPerPage={numPerPage} setPage={setPage} numItems={numberTutorial} />
+        <EmployeeListPagination numPerPage={numPerPage} setPage={setPage} numItems={employeeCount} />
         <Row>
           <Col md={3} className="Button-Col">
             <div className='Add-Button'>
