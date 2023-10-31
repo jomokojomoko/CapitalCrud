@@ -59,8 +59,8 @@ function EmployeePage() {
             <EmployeeListPagination numPerPage={numPerPage} numItems={employeeCount} page={page} changePage={changePage} />
           </Col>
           <Col md={3} className="Button-Col">
-            <div className='Add-Button'>
-              <AddEmployeeButton setModalInfo={setModalInfo} />
+            <div className="Add-Employee">
+              <AddEmployeeButton className="Add" setModalInfo={setModalInfo} />
             </div>
           </Col>
         </Row>
