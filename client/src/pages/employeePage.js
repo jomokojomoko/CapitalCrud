@@ -54,8 +54,10 @@ function EmployeePage() {
         <hr></hr>
         <EmployeeModal modalInfo={modalInfo} setModalInfo={setModalInfo} updateList={updateEmployeeData} />
         <EmployeeList setModalInfo={setModalInfo} deleteEmployeeData={deleteEmployeeData} employeeData={employeeData} setUId={setUId} />
-        <EmployeeListPagination numPerPage={numPerPage} numItems={employeeCount} page={page} changePage={changePage} />
-        <Row>
+        <Row className="Below-List">
+          <Col md={3}>
+            <EmployeeListPagination numPerPage={numPerPage} numItems={employeeCount} page={page} changePage={changePage} />
+          </Col>
           <Col md={3} className="Button-Col">
             <div className='Add-Button'>
               <AddEmployeeButton setModalInfo={setModalInfo} />

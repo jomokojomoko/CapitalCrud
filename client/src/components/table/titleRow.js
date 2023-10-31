@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 function TitleRow({ headers }) {
     // map headers to <Col> objects
     const titles = headers.map((header) => {
-        return <Col>{header}</Col>
+        return <Col key={header}>{header}</Col>
     })
 
     return (

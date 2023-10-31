@@ -13,7 +13,7 @@ function EmployeeList({ deleteEmployeeData, setModalInfo, setUId, employeeData }
     useEffect(() => {
         if (employeeData != null) {
             setListItems(employeeData.map((employee) =>
-                <ListGroup.Item id={employee.id}>
+                <ListGroup.Item key={employee.id} id={employee.id}>
                     <EmployeeRow deleteEmployeeData={deleteEmployeeData} employeeData={employee} setModalInfo={setModalInfo} setUId={setUId} />
                 </ListGroup.Item>
             ));
